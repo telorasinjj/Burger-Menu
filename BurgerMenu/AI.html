@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burger Floating Menu</title>
+
+<style>
+*{
+  background-color: #140400;
+  
+}
+.ard-sosmed {
+  position: fixed;
+  bottom: 50%;
+  left: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  z-index: 999;
+  transition: all 0.4s ease;
+}
+
+
+.hamburg {
+  cursor: pointer;
+  width: 50px;
+  padding: 10px;
+  background-color: #d42b05;
+  border-radius: 20px;
+  border: 2px solid #f59d2a;
+  position: relative;
+  z-index: 1000;
+  background-color: none;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  margin: 5px auto;
+  transition: 0.4s;
+}
+
+
+.ard-sosmed.open .bar1 {
+  transform: translateY(8px) rotate(-45deg);
+}
+.ard-sosmed.open .bar2 {
+  opacity: 0;
+}
+.ard-sosmed.open .bar3 {
+  transform: translateY(-8px) rotate(45deg);
+}
+
+
+.ard-sosmed ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ard-sosmed ul li {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transform: translateY(0) rotate(0deg);
+  transition: all 0.6s ease;
+}
+
+.ard-sosmed ul li a img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #140400;
+  border: 2px solid #f59d2a;
+  background-color: none;
+}
+
+
+.ard-sosmed.open ul li {
+  opacity: 1;
+  transform: rotate(-360deg);
+}
+
+
+.ard-sosmed.open ul li:nth-child(1) {
+  transform: translatex(0px) translateY(125px)  rotate(-360deg);
+  transition-delay: 0.1s;
+}
+.ard-sosmed.open ul li:nth-child(2) {
+  transform: translatex(65px) translateY(110px) rotate(-360deg);
+  transition-delay: 0.2s;
+}
+.ard-sosmed.open ul li:nth-child(3) {
+  transform: translatex(120px) translateY(70px)  rotate(-360deg);
+  transition-delay: 0.3s;
+}
+.ard-sosmed.open ul li:nth-child(4) {
+  transform: translatex(135px) translateY(0px)  rotate(-360deg);
+  transition-delay: 0.4s;
+}
+.ard-sosmed.open ul li:nth-child(5) {
+  transform: translatex(120px) translateY(-70px) rotate(-360deg);
+  transition-delay: 0.5s;
+}
+.ard-sosmed.open ul li:nth-child(6) {
+  transform: translatex(65px) translateY(-110px) rotate(-360deg);
+  transition-delay: 0.6s;
+}
+.ard-sosmed.open ul li:nth-child(7) {
+  transform: translatex(0px) translateY(-125px) rotate(-360deg);
+  transition-delay: 0.7s;
+}
+
+
+.ard-sosmed.closing ul li {
+  opacity: 0;
+  transform: translateY(0px) rotate(360deg);
+  transition-delay: 0s;
+}
+
+
+.hamburg {
+  z-index: 10000;
+}
+</style>
+</head>
+<body>
+
+<div class="ard-sosmed">
+  <div class="hamburg" onclick="ardFunction()">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <ul>
+    <li><a href="#" target="_blank"><img src="https://media.tenor.com/UmW_-XJxwssAAAAj/x-twitter.gif" alt="X"></a></li>
+    <li><a href="#" target="_blank"><img src="https://imagedelivery.net/H-3h2-fdAFCMcVhUfA4IUA/f5fbf238-0e77-4ea3-8caf-e2a600ebba00/public" alt="TELEGRAM"></a></li>
+    <li><a href="#" target="_blank"><img src="https://cliply.co/wp-content/uploads/2021/08/372108180_WHATSAPP_ICON_400.gif" alt="WHATSAPP"></a></li>
+    <li><a href="#" target="_blank"><img src="https://imagedelivery.net/H-3h2-fdAFCMcVhUfA4IUA/d41734c2-ab90-4a77-b7c0-f2e5714a7f00/public" alt="FACEBOOK"></a></li>
+    <li><a href="#/" target="_blank"><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDNjNTZ5b3dvNHZldWJrYXBxMnI5N2pldmJneDh4cTl0aWllbWJiMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MGn7QRu9VepSgSCbyp/giphy.gif" alt="INSTAGRAM"></a></li>
+    <li><a href="#" target="_blank"><img src="https://imagedelivery.net/H-3h2-fdAFCMcVhUfA4IUA/4c5ff604-d838-4dfc-ecac-5abbeec39a00/public" alt="mobile apk"></a></li>
+    <li><a href="#" target="_blank"><img src="https://media.tenor.com/NcNdYO-RP5kAAAAi/discord.gif" alt="DISCORD"></a></li>
+  </ul>
+</div>
+
+<script>
+const ard = document.querySelector('.ard-sosmed');
+
+function ardFunction() {
+  if (ard.classList.contains('open')) {
+    ard.classList.remove('open');
+    ard.classList.add('closing');
+    setTimeout(() => {
+      ard.classList.remove('closing');
+    }, 600);
+  } else {
+    ard.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
